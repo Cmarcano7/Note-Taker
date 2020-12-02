@@ -1,30 +1,24 @@
-// Getting all dependencies
+// Obtaining Express dependency
+const express = require("express");
 
-var express = require("express");
-var fs = require("fs");
-var database = require("./db/db.json")
+const app = express();
 
-var app = express();
-
-// Sets an initial port. We"ll use this later in our listener
-var PORT = process.env.PORT || 8080;
+// Setting port to existing or local port 5000
+const PORT = process.env.PORT || 5000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-});
+// Pulls required CRUD code to main server
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
-app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-});
+// To serve static files such as CSS files and JavaScript files.
+app.use(express.static('public'))
 
-app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
+// Validating correct server
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
 });
-
-app.get("/api/notes", function(req, res) {
-    return res.json(database);
-});
+  
