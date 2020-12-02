@@ -1,80 +1,65 @@
-# Unit 11 Express Homework: Note Taker
+# Note-Taker
 
-## Description
+This project was designed as a homework assignment for MSU's coding bootcamp. 
 
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+This application was created with the use of Javascript, Node.js, Express.js, , and uuid package as well as some html and css.
 
-* The application frontend has already been created, it's your job to build the backend and connect the two.
+![ProgramPreview](./assets/images/Notes_Preview.png)
 
-* The following HTML routes should be created:
+This projects' code can be found on my github (Link can be found below).
 
-  * GET `/notes` - Should return the `notes.html` file.
+# Table of Contents
+1. [Links](#Links)
+2. [Project Overview](#projectoverview)
+3. [Execution](#Execution)
+4. [Contains](#Contains)
+5. [Demonstration](#Demonstration)
+6. [Future](#Future)
 
-  * GET `*` - Should return the `index.html` file
 
-* The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
+## Links
 
-* The following API routes should be created:
+* [GitHub Repository](https://github.com/CMarcano7/Note-Taker)
 
-  * GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+* [Heroku](https://morning-chamber-87275.herokuapp.com/)
 
-  * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+## Project Overview <a name="projectoverview"></a>
 
-  * DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
+* This project was made so that the user could create and delete notes that will be saved for a later date all while using mainly express.js and node.js.
+* Javascript, express.js, node.js, uuid, html, css
 
-## User Story
+## Execution
+### Use the Heroku Link above:
+> Once at the home page you can just begin by clicking the Get Started button 
+![GetStartedButton](./assets/images/getStarted.png)
+> After you can give your note a title and continue on writing your note in the body (if there is already text there or you would like to create a new note, without saving one, you can simply hit the pencil in the top right of the page.)
+![NewNote](./assets/images/newNote.png)
+> After you can save your note by hitting the save icon on the top right of the screen
+> You can also delete your notes by clicking the delete icon nex to the saved note titles.
 
-AS A user, I want to be able to write and save notes
+## Contains: 
+* Javascript Files
+    * server.js
+    * htmlRoutes.js
+    * apiRoutes.js
 
-I WANT to be able to delete notes I've written before
+* JSON File
+  * db.json
 
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+* Express.js
+    * [Inquirer](https://expressjs.com/)
 
-## Business Context
+* UUID.js
+    * [uuid](https://www.npmjs.com/package/uuid)
 
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+* Find node.js docs [Here](https://nodejs.org/dist/latest-v14.x/docs/api/)
 
-## Acceptance Criteria
+## Demonstration
 
-Application should allow users to create and save notes.
+* Link to demo [Here](https://drive.google.com/file/d/1aUkJaB9iOzerdjeeAr5jMGDpRFFCO5vQ/view)
 
-Application should allow users to view previously saved notes.
+* MSU BootCamp
 
-Application should allow users to delete previously saved notes.
+## Future
 
-## Deploying the App
-
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Supplemental/HerokuGuide.md) for getting your app deployed on Heroku.
-
-- - -
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
-
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
-
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
-
-* The URL of the GitHub repository
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+* For the future of this project I would like to give the users the ability to save notes based on a user id and password they can create so that their notes are unique to them.
