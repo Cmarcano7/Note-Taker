@@ -1,6 +1,9 @@
 // Module enables interacting with the file system.
 const fs = require("fs")
 
+// Package used to create unique ids
+const { v4: uuidv4 } = require('uuid');
+
 // Aquiring all the JSON data
 var database = require("../db/db.json")
 
@@ -18,20 +21,16 @@ module.exports = function(app) {
         });
     };
     
+    // Displays all api data saved on database var
     app.get("/api/notes", (req, res) => {
         return res.json(database);
     });
 
+    // Post data once corresponding icon is clicked
     app.post("/api/notes", (req, res) => {
 
-        // Set unique id to entry
-        if (database.length == 0){
-            req.body.id = "0";
-        } else{
-            req.body.id = JSON.stringify(JSON.parse(database[database.length - 1].id) + 1);
-        };
-        
-        console.log("req.body.id: " + req.body.id);
+        // Making use of the unique id generator uuid
+        req.body.id = uuidv4();
 
         // Pushes Body to JSON Array
         database.push(req.body);
@@ -44,19 +43,17 @@ module.exports = function(app) {
         res.json(req.body);
     });
 
-    app.delete("/api/notes", (req, res) => {
-        // Obtains id and converts to a string
-        let id = req.params.id.toString();
+    // Delete used once user hits corresponding icon, will search based on unique id given to each key
+    app.delete("/api/notes/:id", (req, res) => {
+        // Sets a variables for the for loop below
+        let id = req.params.id;
 
-        // Goes through notesArray searching for matching ID
+        // Searches database array for matching id
         for (i=0; i < database.length; i++){
             
+            //  Executes delete once a match is found between ids
             if (database[i].id == id){
-                console.log("match!");
-                // responds with deleted note
                 res.send(database[i]);
-
-                // Removes the deleted note
                 database.splice(i,1);
                 break;
             }

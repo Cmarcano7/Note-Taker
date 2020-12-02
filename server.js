@@ -1,7 +1,5 @@
 // Obtaining Express dependency
 const express = require("express");
-const path = require("path")
-
 const app = express();
 
 // Setting port to existing or local port 5000
@@ -16,7 +14,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // To serve static files such as CSS files and JavaScript files.
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // Validating correct server
 app.listen(PORT, function() {
